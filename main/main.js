@@ -6,7 +6,9 @@ function main(input) {//['ITEM000001','ITEM000001','ITEM000001','ITEM000001','IT
     let allPro = printInvertory.loadPromotions();
     //console.log(allPro[0]);
     let selectedItem = pickItems(input,allItems, allPro);
-    let price = calculatePrice(selectedItem);
+    //console.log(selectedItem);
+    let result = calculatePrice(selectedItem);
+    console.log(result);
     return 'Hello World!';
 }
 
@@ -19,19 +21,19 @@ function pickItems(input,allItems, allPro){
             if((j.barcode.trim()) ==(i.trim())){
                 items = j;
                 items.number = store[i];
+                items.price = items.price.toFixed(2);
                 if((allPro[0].barcodes).includes(j.barcode.trim())){
                     items.promotion = allPro[0].type;
                 }else{
                     items.promotion = null;
                 }
-                console.log(items);
                 allSelectedItem.push(items);
             }
         }
 
     }
 
-    return store;
+    return allSelectedItem;
 }
 function dealWithBarCode(input){
     let store = {};
@@ -63,11 +65,33 @@ function calculatePrice(selectedItem){
     let save = 0;
     let proNum;// the number of promotion
     for(let item of selectedItem){
-        priceWithoutPro += (item.price * item.number).toFixed(2);
+        priceWithoutPro += item.price * item.number;
         proNum = Math.floor(item.number/3);
-        priceWithPro += (item.price * (item.number-proNum)).toFixed(2);
-        recipt +=
+        if(item.promotion==='BUY_TWO_GET_ONE_FREE'){
+            priceWithPro += item.price * (item.number-proNum);
+            //console.log(priceWithPro);
+        }
+        else{
+            priceWithPro += item.price * item.number;
+        }
+        recipt += `名称：${item.name}，数量：${item.number}${item.unit}，单价：${item.price}(元)，小计：${(item.price * (item.number-proNum)).toFixed(2)}(元)`;
+        recipt += '\n';
+
     }
+    recipt+='----------------------\n';
+    recipt +='挥泪赠送商品：\n' ;
+    for(let item of selectedItem){
+        proNum = Math.floor(item.number/3);
+        if(item.promotion==='BUY_TWO_GET_ONE_FREE'){
+            recipt+=`名称：${item.name}，数量：${proNum}${item.unit}\n`;
+        }
+    }
+    recipt+='----------------------\n';
+    recipt+= `总计：${priceWithPro.toFixed(2)}(元)\n` +
+        `节省：${(priceWithoutPro-priceWithPro).toFixed(2)}(元)\n` +
+        '**********************';
+    return recipt;
+   // console.log(recipt);
 }
-main(['ITEM000001','ITEM000001','ITEM000001','ITEM000001','ITEM000001','ITEM000003-2','ITEM000005','ITEM000005','ITEM000005']);
+//main(['ITEM000001','ITEM000001','ITEM000001','ITEM000001','ITEM000001','ITEM000003-2','ITEM000005','ITEM000005','ITEM000005']);
 module.exports = main;
