@@ -50,4 +50,11 @@ function loadPromotions() {
             ]
         }
     ];
+ }
+module.exports = {
+    loadAllItems,
+    loadPromotions
 }
+
+// exports.loadAllItems = loadAllItems();
+// exports.loadPromotions = loadPromotions();
