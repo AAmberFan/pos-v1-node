@@ -1,15 +1,14 @@
-const printInvertory = require("./datbase.js");
+// const printInvertory = require("./datbase.js");
 
 function main(input) {//['ITEM000001','ITEM000001','ITEM000001','ITEM000001','ITEM000001','ITEM000003-2','ITEM000005','ITEM000005','ITEM000005']
-    let allItems = printInvertory.loadAllItems();
-
-    let allPro = printInvertory.loadPromotions();
-    //console.log(allPro[0]);
+    console.log(input);
+    let allItems = loadAllItems();
+    let allPro = loadPromotions();
     let selectedItem = pickItems(input,allItems, allPro);
     //console.log(selectedItem);
     let result = calculatePrice(selectedItem);
     console.log(result);
-    return 'Hello World!';
+    return result;
 }
 
 function pickItems(input,allItems, allPro){
@@ -59,7 +58,7 @@ function dealWithBarCode(input){
     return store;
 }
 function calculatePrice(selectedItem){
-    let recipt = '***<没钱赚商店>购物清单***\n';
+    let recipt = '***<没钱赚商店>购物清单***\n<br />';
     let priceWithoutPro = 0;
     let priceWithPro = 0;
     let save = 0;
@@ -75,23 +74,23 @@ function calculatePrice(selectedItem){
             priceWithPro += item.price * item.number;
         }
         recipt += `名称：${item.name}，数量：${item.number}${item.unit}，单价：${item.price}(元)，小计：${(item.price * (item.number-proNum)).toFixed(2)}(元)`;
-        recipt += '\n';
+        recipt += '\n<br />';
 
     }
-    recipt+='----------------------\n';
-    recipt +='挥泪赠送商品：\n' ;
+    recipt+='----------------------\n<br />';
+    recipt +='挥泪赠送商品：\n<br />' ;
     for(let item of selectedItem){
         proNum = Math.floor(item.number/3);
         if(item.promotion==='BUY_TWO_GET_ONE_FREE'){
-            recipt+=`名称：${item.name}，数量：${proNum}${item.unit}\n`;
+            recipt+=`名称：${item.name}，数量：${proNum}${item.unit}<br/>`;
         }
     }
-    recipt+='----------------------\n';
+    recipt+='----------------------\n<br />';
     recipt+= `总计：${priceWithPro.toFixed(2)}(元)\n` +
-        `节省：${(priceWithoutPro-priceWithPro).toFixed(2)}(元)\n` +
+        `节省：${(priceWithoutPro-priceWithPro).toFixed(2)}(元)<br />` +
         '**********************';
     return recipt;
    // console.log(recipt);
 }
 //main(['ITEM000001','ITEM000001','ITEM000001','ITEM000001','ITEM000001','ITEM000003-2','ITEM000005','ITEM000005','ITEM000005']);
-module.exports = main;
+// module.exports = main;

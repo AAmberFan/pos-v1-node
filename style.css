@@ -1,0 +1,61 @@
+body{
+    font-size: 16px;
+    font-family: Avenir;
+
+}
+nav{
+    height: 50px;
+    width: 100%;
+    background-color: rgb(40,40,40);
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 1px 3px rgba(40,40,40,0.2);
+}
+nav div{
+    margin:0 auto;
+}
+section{
+    margin-top: 10px;
+}
+#itemList{
+    width: 80%;
+    margin: 0 auto;
+    padding: 10px;
+    display: flex;
+    flex-wrap: wrap;
+}
+.item{
+    width: 200px;
+    height: 150px;
+    padding: 3px;
+    background-color: antiquewhite;
+    border-collapse:collapse;
+    border: 1px solid rgba(40,40,40,0.5);
+}
+.item:hover{
+    background-color: lightcyan;
+
+}
+button{
+    width: 50%;
+    height: 40px;
+    background-color: cornflowerblue;
+    color: white;
+    border-radius: 5px;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+}
+button:hover{
+    background-color: aliceblue;
+    color: black;
+}
+#Summery{
+    background-color: antiquewhite;
+    width: 50%;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+}

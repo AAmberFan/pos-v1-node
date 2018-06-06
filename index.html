@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Pos</title>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav>
+        <div>Pos Jquery</div>
+    </nav>
+    <!--item list-->
+    <section>
+        <div>Item List</div>
+        <div id="itemList">
+            <div class="item">
+                <div>Name: 可口可乐</div>
+                <div>Price(¥): 3.00</div>
+                <div class="barcode">barcode: ITEM000000</div>
+                <label>account:</label>
+                <input type="text" value="0" required="required"/>
+
+            </div>
+
+            <div class="item">
+                <div>Name: 雪碧</div>
+                <div>Price(¥): 3.00</div>
+                <div class="barcode">barcode: ITEM000001</div>
+
+                    <label>account:</label>
+                    <input type="text" value="0" required="required"/>
+
+            </div>
+
+            <div class="item">
+                <div>Name: 苹果</div>
+                <div>Price(¥): 5.50</div>
+                <div class="barcode">barcode: ITEM000002</div>
+
+                    <label>account:</label>
+                    <input type="text" value="0" required="required"/>
+
+            </div>
+
+            <div class="item">
+                <div>Name: 荔枝</div>
+                <div>Price(¥): 15.00</div>
+                <div class="barcode">barcode: ITEM000003</div>
+
+                    <label>account:</label>
+                    <input type="text" value="0" required="required"/>
+
+            </div>
+
+            <div class="item">
+                <div>Name: 电池</div>
+                <div>Price(¥): 2.00</div>
+                <div class="barcode">barcode: ITEM000004</div>
+                    <label>account:</label>
+                    <input type="text" value="0" required="required"/>
+
+            </div>
+
+            <div class="item">
+                <div>Name: 方便面</div>
+                <div>Price(¥): 4.50</div>
+                <div class="barcode">barcode: ITEM000005</div>
+
+                    <label>account:</label>
+                    <input type="text" value="0" required="required"/>
+
+            </div>
+        </div>
+    </section>
+    <button id="submit" type="button">Submit</button>
+    <!--summery-->
+    <div class="receipt">
+        summery:
+        <p id="Summery">
+
+        </p>
+    </div>
+    <script src="main/datbase.js"></script>
+    <script src="main/main.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
